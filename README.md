@@ -5,12 +5,15 @@ Collection of samples used to demonstrate Kubernetes concepts.
 ## Scheduling
 
 [Specify node by name][node-name]
+
 [Node Selector][node-selector]
+
 [Node Affinity][node-affinity]
 
 ## Ingress
 
 [Ingress route one][ingress-path-1]
+
 [Ingress route two][ingress-path-2]
 
 
