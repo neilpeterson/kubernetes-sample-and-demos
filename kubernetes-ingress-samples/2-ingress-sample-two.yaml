@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: nepetersv2
+  name: nepetersv2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nepetersv2
+  template:
+    metadata:
+      labels:
+        app: nepetersv2
+    spec:
+      containers:
+      - image: neilpeterson/nepetersv2
+        name: nepetersv2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nepetersv2
+  name: nepetersv2
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nepetersv2
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nepetersv2
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /v2
+        backend:
+          serviceName: nepetersv2
+          servicePort: 80

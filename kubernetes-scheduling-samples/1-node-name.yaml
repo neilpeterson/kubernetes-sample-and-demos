@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kube-aci-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kube-aci-demo
+    spec:
+      containers:
+      - name: azure-vote-front
+        image: microsoft/aci-helloworld
+        ports:
+        - containerPort: 80
+      nodeName: aks-nodepool1-39289454-2

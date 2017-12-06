@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-aci-demo
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: beta.kubernetes.io/os
+            operator: In
+            values:
+            - windows
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: disktype
+              operator: In
+              values:
+              - ssd
+              - azuredisk
+  containers:
+    - name: azure-vote-front
+      image: microsoft/aci-helloworld
+      ports:
+      - containerPort: 80
