@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-aci-demo
+  labels:
+    preset: demo
+spec:
+  containers:
+  - name: kube-aci-demo
+    image: microsoft/aci-helloworld
+    ports:
+    - containerPort: 80
