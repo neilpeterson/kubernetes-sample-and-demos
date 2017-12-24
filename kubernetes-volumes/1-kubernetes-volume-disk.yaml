@@ -1,0 +1,16 @@
+# This is not working - need to follow up.
+apiVersion: v1
+kind: Pod
+metadata:
+ name: azure-disk
+spec:
+ containers:
+  - image: neilpeterson/nepetersv1
+    name: azure-disk
+    volumeMounts:
+      - name: azure-disk
+        mountPath: /data
+ volumes:
+      - name: azure-disk
+        azureDisk:
+          diskName: aksdisk

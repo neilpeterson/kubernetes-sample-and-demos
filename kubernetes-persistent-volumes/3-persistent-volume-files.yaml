@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: azure-secret
+type: Opaque
+data:
+  azurestorageaccountname: a3ViZXJuZXRlc3B2Y2ZpbGVz
+  azurestorageaccountkey: OWFFclNyTk9GcGtybTVwdDJlNDZXVmJySzRzanlOcWxkMktnSTI3cEpncFBUR0xPbVIrMEkwVitHTkFVYlVHNWNpUXFETzl4NUE1WTZaQTBmL1RKU3c9PQ==
+---
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "azure-files" 
+spec:
+  capacity:
+    storage: "1Gi" 
+  accessModes:
+    - "ReadWriteMany"
+  azureFile: 
+    secretName: azure-secret 
+    shareName: azure-files 
+    readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-file
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pv-demo-pod2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apv-demo-pod
+    spec:
+      containers:
+      - name: pv-demo-pod
+        image: neilpeterson/nepetersv1
+        volumeMounts:
+        - name: azure-file
+          mountPath: /data
+      volumes:
+      - name: azure-file
+        persistentVolumeClaim:
+          claimName: azure-file

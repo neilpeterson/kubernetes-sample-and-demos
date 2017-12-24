@@ -2,42 +2,42 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: nepetersv1
-  name: nepetersv1
+    app: kube-aci-demo
+  name: kube-aci-demo
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nepetersv1
+      app: kube-aci-demo
   template:
     metadata:
       labels:
-        app: nepetersv1
+        app: kube-aci-demo
     spec:
       containers:
-      - image: neilpeterson/nepetersv1
-        name: nepetersv1
+      - image: microsoft/aci-helloworld
+        name: kube-aci-demo
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: nepetersv1
-  name: nepetersv1
+    app: kube-aci-demo
+  name: kube-aci-demo
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: nepetersv1
+    app: kube-aci-demo
   sessionAffinity: None
   type: ClusterIP
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: nepetersv1
+  name: kube-aci-demo
   annotations:
     ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -46,5 +46,5 @@ spec:
       paths:
       - path: /v1
         backend:
-          serviceName: nepetersv1
+          serviceName: kube-aci-demo
           servicePort: 80

@@ -1,6 +1,6 @@
 # Kubernetes Pod Preset
 
-- Intercept and mutate object create or ally request.
+- Intercept and mutate object create or apply request.
 - Enabled .via an admission controller
 - Preset is applied to pods with matching label key pair.
 - PodPreset itself is an api object

@@ -14,4 +14,6 @@ spec:
         image: microsoft/aci-helloworld
         ports:
         - containerPort: 80
-      nodeName: aks-nodepool1-39289454-2
+      tolerations:
+      - key: "department"
+        value: "finance"

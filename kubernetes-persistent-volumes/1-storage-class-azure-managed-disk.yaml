@@ -1,0 +1,46 @@
+# Managed disk is created, however this operaion fails with
+# OperationNotAllowed" Message="Addition of a managed disk to a VM with blob based disks is not supported.
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
+metadata:
+  name: azure-managed-disk
+provisioner: kubernetes.io/azure-disk
+parameters:
+  storageaccounttype: Standard_LRS
+  location: eastus
+  kind: Managed
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-managed-disk
+  annotations:
+    volume.beta.kubernetes.io/storage-class: azure-managed-disk
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pv-demo-pod
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apv-demo-pod
+    spec:
+      containers:
+      - name: pv-demo-pod
+        image: neilpeterson/nepetersv1
+        volumeMounts:
+        - name: azure-managed-disk
+          mountPath: /data
+      volumes:
+      - name: azure-managed-disk
+        persistentVolumeClaim:
+          claimName: azure-managed-disk

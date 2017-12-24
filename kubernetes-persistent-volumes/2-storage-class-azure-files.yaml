@@ -1,0 +1,42 @@
+# Creates a 
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
+metadata:
+  name: azure-file
+provisioner: kubernetes.io/azure-file
+parameters:
+  skuName: Standard_LRS
+  location: eastus
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-file
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pv-demo-pod2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apv-demo-pod
+    spec:
+      containers:
+      - name: pv-demo-pod
+        image: neilpeterson/nepetersv1
+        volumeMounts:
+        - name: azure-file
+          mountPath: /data
+      volumes:
+      - name: azure-file
+        persistentVolumeClaim:
+          claimName: azure-file

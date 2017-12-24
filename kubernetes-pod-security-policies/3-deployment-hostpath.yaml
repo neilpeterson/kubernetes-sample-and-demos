@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sps-demo
+spec:
+  containers:
+  - image: neilpeterson/nepetersv1
+    name: update-sp
+    volumeMounts:
+    - mountPath: /etc/kubernetes
+      name: etc-kubernetes
+  volumes:
+  - name: etc-kubernetes
+    hostPath:
+      path: /etc/kubernetes
