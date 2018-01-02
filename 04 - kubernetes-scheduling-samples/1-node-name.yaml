@@ -14,4 +14,4 @@ spec:
         image: microsoft/aci-helloworld
         ports:
         - containerPort: 80
-      nodeName: aks-nodepool1-39289454-2
+      nodeName: virtual-kubelet-virtual-kublet-linux
