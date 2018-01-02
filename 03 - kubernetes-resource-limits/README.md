@@ -39,9 +39,13 @@ spec:
           limits:
             memory: 128i
             cpu: 500m
-    ```
+```
+
+The sample can be run with the following command.
+
+```
+kubectl apply -f https://raw.githubusercontent.com/neilpeterson/kubernetes-sample-and-demos/master/03%20-%20kubernetes-resource-limits/memory-cpu.yaml
 
 ## Resources
 
 Docs - https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-
