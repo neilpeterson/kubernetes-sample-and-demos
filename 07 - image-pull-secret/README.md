@@ -4,6 +4,7 @@
 
 ```
 kubectl create secret docker-registry acr-auth --docker-server=https://myacrinstance.azurecr.io --docker-username=<sp-id> --docker-password=<sp-client-secret> --docker-email=user@contoso.com
+```
 
 ## Use Secret in Manifest
 
