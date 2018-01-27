@@ -2,19 +2,25 @@
 
 Collection of samples used to demonstrate Kubernetes concepts.
 
-## Scheduling
+## [Resource requests and limits](./03\ -\ kubernetes-resource-limits/readme.md)
 
-[Specify node by name][node-name]
+## [Scheduling](./04\ -\ kubernetes-scheduling-samples/readme.md)
 
-[Node Selector][node-selector]
+## Kubernetes Volumes
 
-[Node Affinity][node-affinity]
+## Kubernetes Persistant Volumes
 
-## Ingress
+## [Image Pull Secret](./07\ -\ image-pull-secret/readme.md)
 
-[Ingress route one][ingress-path-1]
+## [Initialization Containers](./08\ -\ kubernetes-init-container/.readme.md)
 
-[Ingress route two][ingress-path-2]
+## [Ingress](./09\ -\ kubernetes-ingress-samples/)
+
+## [Pod preset](./10\ -\ kubernetes-pod-preset/readme.md)
+
+## [Pod security policies](./11-\ kubernetes-pod-security-policies/readme.md)
+
+## [Go Client Samples](./99\ -\ kubernetes-go-client-samples/)
 
 
 <!-- LINKS -->
