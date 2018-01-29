@@ -6,13 +6,13 @@ Collection of samples used to demonstrate Kubernetes concepts.
 
 ## [Scheduling](./04-kubernetes-scheduling-samples/)
 
-## [Kubernetes Volumes](./05-kubernetes-volumes)
+## [Kubernetes volumes](./05-kubernetes-volumes)
 
-## [Kubernetes Persistant Volumes](./06-kubernetes-persistent-volumes/)
+## [Kubernetes persistant volumes](./06-kubernetes-persistent-volumes/)
 
-## [Image Pull Secret](./07-image-pull-secret/)
+## [Image pull secret](./07-image-pull-secret/)
 
-## [Initialization Containers](./08-kubernetes-init-container/)
+## [Initialization containers](./08-kubernetes-init-container/)
 
 ## [Ingress](./09-kubernetes-ingress-samples/)
 
