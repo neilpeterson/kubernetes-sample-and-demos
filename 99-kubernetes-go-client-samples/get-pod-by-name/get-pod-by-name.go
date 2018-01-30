@@ -33,22 +33,9 @@ func main() {
 	// Kubernetes client
 	clientset := kubernetes.NewForConfigOrDie(config)
 
-	// Get pod + replica set name
-	pod, _ := clientset.CoreV1().Pods("default").Get("aci-helloworld-1927304711-nl6zg", metav1.GetOptions{})
-	rsn := pod.GetOwnerReferences()[0]
-	fmt.Println(rsn.Name)
+	// Get pod
+	pod, _ := clientset.CoreV1().Pods("default").Get("aci-helloworld-1927304711-pps5k", metav1.GetOptions{})
 
-	// Get replica set
-	rs, err := clientset.Extensions().ReplicaSets("default").Get("aci-helloworld-1927304711", metav1.GetOptions{})
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(rs.Spec.Template.Spec.SchedulerName)
-
-	// Update replica set shceduler name (template)
-	rs.Spec.Template.Spec.SchedulerName = "default"
-	_, err = clientset.ExtensionsV1beta1().ReplicaSets("default").Update(rs)
-	if err != nil {
-		fmt.Println(err)
-	}
+	// Do whatever...
+	fmt.Println(pod.Spec.SchedulerName)
 }
