@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kube-aci-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kube-aci-demo
+        dept: it
+        owner: nepeters
+      annotations:
+        volume.beta.kubernetes.io/storage-class: managed-premium
+    spec:
+      containers:
+      - name: kube-aci-demo
+        image: microsoft/aci-helloworld
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kube-aci-demo-two
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kube-aci-demo
+        dept: finance
+        owner: nepeters
+      annotations:
+        volume.beta.kubernetes.io/storage-class: managed-premium
+    spec:
+      containers:
+      - name: kube-aci-demo-two
+        image: microsoft/aci-helloworld
+        ports:
+        - containerPort: 80
