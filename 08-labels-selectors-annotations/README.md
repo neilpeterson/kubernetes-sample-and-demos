@@ -95,7 +95,7 @@ Use equity-based label selector in API query:
 curl http://localhost:8001/api/v1/namespaces/default/pods?labelSelector=dept%3Dfinance
 ```
 
-Use ser-based sleector in API query:
+Use set-based selector in API query:
 
 ```
 curl http://localhost:8001/api/v1/namespaces/default/pods?labelSelector=dept+in+%28it%29

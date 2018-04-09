@@ -9,9 +9,9 @@ kubectl create -f deployment.yaml
 Items to note from deployment:
 
 - minReadySeconds - time Kubernetes waits between pod bootup.
-- type: RollingUpdate  (can also be recreate where all pods are removed before updating).
+- type: RollingUpdate  (can also be `recreate` where all pods are removed before updating).
 - maxSurge - max pods greater that replica count.
-- maxUnavailable - max unavaliabl during update.
+- maxUnavailable - max unavailable during update.
 
 Update deployment:
 

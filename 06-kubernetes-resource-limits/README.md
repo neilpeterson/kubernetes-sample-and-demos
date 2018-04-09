@@ -9,9 +9,9 @@ Four options that can be specified on each container in a pod.
 - spec.containers[].resources.requests.cpu
 - spec.containers[].resources.requests.cpu
 
-**Requests** are used at the time of scheduling. The scheduler will ensure that the selected node is capable of handeling the requests.
+**Requests** are used at the time of scheduling. The scheduler will ensure that the selected node is capable of handling the requests.
 
-**Limits** are used durig run time. If a container exceeds it's memory limit, it may be restarted. If a contianer exceeds it's CPU limits, it will not be restarted.
+**Limits** are used during run time. If a container exceeds its memory limit, it may be restarted. If a container exceeds its CPU limits, it will not be restarted.
 
 ## Sample
 

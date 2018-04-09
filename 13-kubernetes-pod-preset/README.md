@@ -1,7 +1,7 @@
 # Kubernetes Pod Preset
 
 - Intercept and mutate object create or apply request.
-- Enabled .via an admission controller
+- Enabled.via an admission controller
 - Preset is applied to pods with matching label key pair.
 - PodPreset itself is an api object
 
@@ -17,7 +17,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      preset: demo 
+      preset: demo
   env:
     - name: PRESET_DEMO
       value: "Demo Preset Environment Varible.."

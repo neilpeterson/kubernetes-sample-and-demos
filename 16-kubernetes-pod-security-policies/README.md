@@ -14,7 +14,7 @@ Example Policies:
 
 ## Current state of demo
 
-I have not quite gotten these working. Policy is created but not applied.
+I have not gotten these working. Policy is created but not applied.
 
-Other interesting observation, it seems the PSP resource type is avaliable in ACS / AKS, however the admission controller not enabled? Is this related?
+Other interesting observation, it seems the PSP resource type is available in ACS / AKS, however the admission controller not enabled? Is this related?
 
