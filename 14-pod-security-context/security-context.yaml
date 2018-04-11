@@ -9,9 +9,15 @@ spec:
       labels:
         app: kube-aci-demo
     spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 2000
       containers:
       - name: kube-aci-demo
-        image: microsoft/aci-helloworld
+        image: ubuntu
         ports:
         - containerPort: 80
-      nodeName: virtual-kubelet-virtual-kublet-linux
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: ["NET_ADMIN", "SYS_TIME"]

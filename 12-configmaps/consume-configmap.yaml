@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kube-aci-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kube-aci-demo
+    spec:
+      containers:
+      - name: kube-aci-demo
+        image: neilpeterson/nepetersv1
+        ports:
+        - containerPort: 80
+        env:
+          - name: TEST_VAR
+            valueFrom:
+                configMapKeyRef:
+                    name: test-configmap
+                    key: department
