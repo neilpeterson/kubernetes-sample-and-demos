@@ -4,7 +4,7 @@ Provide an identity for a service running in a pod. This identity is used when t
 
 Default account is `default`.
 
-All namespaces have a default service account:
+All namespaces have a default service account and it is mounted on all pods created in that namespace.
 
 ```
 $ kubectl get serviceACcounts --all-namespaces
@@ -18,7 +18,19 @@ kube-system    heapster   1         12h
 kube-system    kube-dns   1         12h
 ```
 
-Create a new service account:
+Auto-mount can be overridden by soecifying this in the pod spec.
+
+```
+automountServiceAccountToken: false
+```
+
+You can also add a new service account.
+
+```
+kubectl create serviceaccount this-admin
+```
+
+or
 
 ```
 apiVersion: v1
